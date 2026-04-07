@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  google-manager:
+    build: .
+    container_name: google-manager
+    restart: unless-stopped
+    ports:
+      - "8002:8002"
+    volumes:
+      - ./data:/app/instance
+    environment:
+      - TZ=Asia/Shanghai
