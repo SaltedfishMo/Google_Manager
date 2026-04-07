@@ -34,4 +34,4 @@ EXPOSE 8002
 RUN mkdir -p /app/instance
 
 # 初始化并启动
-CMD sh -c "python migrate_db.py && python migrate_history.py && python run.py"
+CMD sh -c "(test -f migrate_db.py && python migrate_db.py || true) && (test -f migrate_history.py && python migrate_history.py || true) && python run.py"
